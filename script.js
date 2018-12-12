@@ -70,7 +70,7 @@ function countdown() {
 
 }
 
-function playAgain(){
+function playAgain() {
   location.reload();
 }
 
@@ -84,13 +84,27 @@ function lose() {
 }
 
 function win() {
-  document.getElementById("message").innerHTML = "Congratulations.<br> You win!";
+  document.getElementById("message").innerHTML = "Congratulations.<br> You win!<a href = '#' onclick='playAgain()' style = 'text-decoration: none;color:#336600;'><br>Play Again</a>";
+  var name = prompt("Enter your name: ");
+  var flips = document.getElementById("num-of-flips").innerHTML;
+  saveScore(name, flips);
 }
 
 (function shuffle() {
   for (var i = 0; i < cards.length; i++) {
     var random = Math.floor(Math.random() * 12);
     cards[i].style.order = random;
+  }
+})();
+
+function saveScore(name, flips) {
+  localStorage.setItem(name, flips);
+}
+
+(function printScores() {
+  for (var i = 0; i < localStorage.length; i++) {
+    var key = localStorage.key(i);
+    document.getElementById("scores").innerHTML += "<td>" + (i + 1) + "</td>" + "<td>" + key + "</td>" + "<td>" + localStorage.getItem(key) + "</td>";
   }
 })();
 
