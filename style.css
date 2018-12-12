@@ -72,3 +72,10 @@ body {
   justify-content: center;
   margin: 20px;
 }
+#message{
+  font-family: Comic Sans MS;
+  font-size: 25px;
+  color: #66ff66;
+  display: table-cell;
+  text-align: center;
+}
