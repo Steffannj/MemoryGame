@@ -9,6 +9,7 @@ var matched = 0;
 function flipCard() {
 
   if(gameStarted){
+    document.getElementById("message").innerHTML = "";
     countdown();
     gameStarted = false;
   }
@@ -58,7 +59,7 @@ function countdown() {
     time = document.getElementById("time-remaining").innerHTML--;
     if (time == 1) {
       clearInterval(timer);
-      loose();
+      lose();
     }else if (matched === 8) {
       win();
       clearInterval(timer);
@@ -80,6 +81,12 @@ function win(){
   document.getElementById("message").innerHTML = "Congratulations.<br> You win!";
 }
 
+(function shuffle(){
+  for (var i = 0; i < cards.length; i++) {
+    var random = Math.floor(Math.random() * 12);
+    cards[i].style.order = random;
+  }
+})();
 for (var i = 0; i < cards.length; i++) {
   cards[i].addEventListener('click', flipCard);
 }
