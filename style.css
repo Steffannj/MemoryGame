@@ -1,62 +1,74 @@
-h1{
+h1 {
   text-align: center;
   color: white;
 }
-body, html{
+
+body, html {
   height: 100%;
 }
-body{
+
+body {
   background-image: url("img/background.jpg");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
 }
-.game-content{
+
+.game-content {
   height: 100%;
-  margin-top:3em;
-  background: radial-gradient(#FF7F50,#8B4513);
+  margin-top: 3em;
+  background: radial-gradient(#FF7F50, #8B4513);
 }
-.page-title{
+
+.page-title {
   color: #FF6347;
   font-family: Comic Sans MS;
 }
-.game-info-container{
+
+.game-info-container {
   display: flex;
   justify-content: space-between;
   margin: 20px;
 }
-.game-info{
-  color: 	#F4A460;
+
+.game-info {
+  color: #F4A460;
   font-family: monospace;
   font-size: 2em;
 }
-.card{
+
+.card {
   height: 100px;
   width: 70px;
   transform: scale(1);
   transform-style: preserve-3d;
   transition: transform .5s;
 }
-.card:hover{
+
+.card:hover {
   transform: scale(1.2);
   transition: all 0.4s ease;
 }
-.card.flip{
+
+.card.flip {
   transform: rotateY(180deg);
 }
-.card-back,.card-front{
+
+.card-back, .card-front {
   width: 100%;
   height: 100%;
   position: absolute;
   backface-visibility: hidden;
 }
-.card-front{
+
+.card-front {
   transform: rotateY(180deg);
 }
-.card-container{
+
+.card-container {
   display: grid;
-  grid-template-columns: repeat(4,auto);
-  grid-gap:10px;
+  grid-template-columns: repeat(4, auto);
+  grid-gap: 10px;
   justify-content: center;
   margin: 20px;
 }
