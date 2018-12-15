@@ -101,12 +101,50 @@ function saveScore(name, flips) {
   localStorage.setItem(name, flips);
 }
 
-(function printScores() {
+function compare(a, b) {
+  if (a.flips < b.flips)
+    return -1;
+  if (a.flips > b.flips)
+    return 1;
+  return 0;
+}
+
+function sortScores() {
+  var scoresList = new Array();
+
   for (var i = 0; i < localStorage.length; i++) {
     var key = localStorage.key(i);
-    document.getElementById("scores").innerHTML += "<td>" + (i + 1) + "</td>" + "<td>" + key + "</td>" + "<td>" + localStorage.getItem(key) + "</td>";
+    var score = {
+      name,
+      flips
+    };
+
+    score.name = key;
+    score.flips = localStorage.getItem(key);
+    scoresList.push(score);
+  }
+
+  scoresList.sort(compare);
+  return scoresList;
+}
+
+(function printScores() {
+  var scoresList = sortScores();
+  for (var i = 0; i < scoresList.length; i++) {
+    document.getElementById("scores").innerHTML += "<td>" + (i + 1) + "</td>" + "<td>" + scoresList[i].name + "</td>" + "<td>" + scoresList[i].flips + "</td>";
   }
 })();
+
+function showScoreboard() {
+  var scores = document.getElementById("scores");
+  if (scores.style.visibility != "visible") {
+    scores.style.visibility = "visible";
+    document.getElementById("scores-button").innerHTML = "Hide scoreboard";
+  } else if (scores.style.visibility == "visible") {
+    scores.style.visibility = "hidden";
+    document.getElementById("scores-button").innerHTML = "Show scoreboard";
+  }
+}
 
 for (var i = 0; i < cards.length; i++) {
   cards[i].addEventListener('click', flipCard);

@@ -3,7 +3,7 @@ h1 {
   color: white;
 }
 
-body, html {
+body html {
   height: 100%;
 }
 
@@ -72,10 +72,17 @@ body {
   justify-content: center;
   margin: 20px;
 }
+
 #message{
   font-family: Comic Sans MS;
   font-size: 25px;
   color: #66ff66;
   display: table-cell;
   text-align: center;
+}
+#scores{
+  visibility: hidden;
+}
+.scores-container{
+  margin-top: 3em;
 }
